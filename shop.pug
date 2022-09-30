@@ -1,0 +1,49 @@
+meta(charset="UTF-8")
+meta(http-equiv="X-UA-Compatible", content="IE=edge")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title FORM
+//  look on formdataexp.js file of how this css is served by keeping it into public folder then creating a css folder init then writing css files 
+link(rel="stylesheet", href="/css/main.css")
+nav
+  ul
+    li
+      a(href="/") Home
+main
+  h3.registerText ENTER EMPLOYEE DATA!
+  form(action="/user", method="post")
+    input#username(type="text", name="username", placeholder="Enter Employee Name...")
+    input#email(type="email", name="email", placeholder="Enter Email...")
+    input#profile(type="text", name="profile", placeholder="Enter Profile of Employee...")
+    input#joinDate(type="date", name="joinDate")
+    label(for="picture").picUploadLabel Upload Employee Photo :
+    input#file(type="file", name="file")
+    .genderContainer
+      label(for="genderLabel") Choose Gender :
+      input#male(type="radio", name="gender", value="male")
+      label(for="male") male
+      input#female(type="radio", name="gender", value="female")
+      label(for="female") female
+      input#other(type="radio", name="gender", value="other")
+      label(for="other") other
+    button(type="submit") CONVERT TO CSV
+  .dataContainer
+    h2.dataContainer__Header EMPLOYEES
+  
+    if userData.length > 0
+    each user in userData
+        .dataWrapper 
+            h3  Employee Name: #{user.username}
+            p Gender : #{user.gender}
+            p.joinDate Join Date :  #{user.joinDate}
+            p.contact Contact : #{user.email}
+            h4.profile Profile : #{user.profile ? user.profile : "Not Mentioned"}
+        //- .dataContainerFooter
+        //-     a(href="/convertToCsv") 
+        //-         button.ConvertToCSVbtn CONVERT TO CSV
+    else
+        .dataWrapper
+            h3 Start Entering Data!
+    .CsvDownloader
+      form(action="/downloadCsv", method="get")
+        button(type="submit")#CSVdownloaderBtn DOWNLOAD THE CSV
+        

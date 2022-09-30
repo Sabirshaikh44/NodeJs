@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <!-- look on formdataexp.js file of how this css is served by keeping it into public folder then creating a css folder init then writing css files -->
+    <link rel="stylesheet" href="/css/main.css">
+
+
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h3 class="registerText">Register Now!</h3>
+        <form action="/user" method="post">
+            <input type="text" name="username" id="username" placeholder="Enter Employee Name...">
+            <input type="email" name="email" id="email" placeholder="Enter Email...">
+            <input type="text" name="profile" id="profile" placeholder="Enter Profile of Employee...">
+            <input type="date" name="joinDate" id="joinDate">
+            <label for="picture" class="picUploadLabel">Upload employee photo :</label>
+            <input type="file" name="picture" id="file">
+            <div class="genderContainer">
+                <label for="genderLabel">Choose Gender :</label>
+
+                <input type="radio" name="gender" id="male" value="male">
+                <label for="male">male</label>
+                <input type="radio" name="gender" id="female" value="female">
+                <label for="female">female</label>
+                <input type="radio" name="gender" id="other" value="other">
+                <label for="other">other</label>
+            </div>
+            <button type="submit">CONVERT TO CSV</button>
+        </form>
+        <div class="dataContainer">
+            <h2 class="dataContainer__Header">EMPLOYEES</h2>
+            <div class="dataWrapper">
+                <h3></h3>
+                <p></p>
+                <p class="joinDate"></p>
+                <p class="contact"></p>
+                <h4 class="profile"></h4>
+            </div>
+            <div class="dataWrapper">
+                <h3>Start Entering Data!</h3>
+                <span></span>
+            </div>
+
+            <!-- <div class="dataContainerFooter">
+                <a href="/convertToCsv">
+                    <button class="ConvertToCSVbtn" type="submit">CONVERT TO CSV</button>
+                </a>
+            </div> -->
+        </div>
+
+
+
+        <div class="CsvDownloader">
+            <form action="/downloadCsv" method="get">
+                <button type="submit" id="CSVdownloaderBtn">DOWNLOAD THE CSV</button>
+            </form>
+                   
+                
+        </div>
+    </main>
+
+</body>
+
+</html>
